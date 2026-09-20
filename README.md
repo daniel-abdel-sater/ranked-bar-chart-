@@ -4,13 +4,13 @@
 
 Power BI's bar chart is powerful, but making it rich, informative and clear usually takes workarounds: RANKX, "max" measures, phantom bars and a lot of formatting. Ranked Bar Card builds all of that in, so you can show a lot of insight without overwhelming the reader.
 
-**Latest version: 1.3.1.0** · Free, every feature included
+**Latest version: 1.5.0.0** · Free, every feature included
 
 ---
 
 ## Download
 
-[**rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.3.1.0.pbiviz**](rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.3.1.0.pbiviz). Open the file, then click **Download raw file**.
+[**rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.5.0.0.pbiviz**](rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.5.0.0.pbiviz). Open the file, then click **Download raw file**.
 
 ## Install
 
@@ -36,7 +36,7 @@ That's it: one bar per category, sorted largest first, with the value, its % of 
 - **Rich rows**:
   - value and % of total on every bar
   - a **Detail** chip that shows any measure (growth, margin, orders…) with 37 sign-indicator styles
-- **Top N + "Other"**, with a **Show all** link that expands the list in place.
+- **Top N + "Other"**, with a **Show all** link that expands the list in place. With a hierarchy, Top N applies inside each group or across the whole card.
 - **Rank badges**: numbers, pills, circled and solid numbers, medals, a trophy, crowns, stars, ribbons or flames.
 - **Compare to** any measure (last year, budget, forecast):
   - rank movement ▲2 / ▼1
@@ -44,7 +44,7 @@ That's it: one bar per category, sorted largest first, with the value, its % of 
   - the % change, automatically
 - **Animated re-ranking**: bars slide to their new rank when a filter or slicer changes.
 - **Target ticks** and an **average line**.
-- **Legend**: stacked or 100 % stacked segments per member.
+- **Legend**: stacked or 100 % stacked segments per member. You choose how many members keep their own colour (0 shows every member), picked by grand total or per bar, with the rest grouped as "Other".
 - **Drill down** through an Axis hierarchy:
   - **Grouped**, like a matrix: each parent has its own bar, with its children indented below
   - **Flat**: the lowest level with path labels

@@ -62,7 +62,7 @@ Three steps to a working visual. Everything else is optional and explained below
 | **Bar** | One row of the card: label, values and a bar for one Axis value |
 | **Track** | The faint full-width lane behind each bar |
 | **Segment** | One Legend member's part of a stacked bar |
-| **Other** | The bar that adds up everything beyond Top N, or the series that groups Legend members beyond the 8 largest |
+| **Other** | The bar that adds up everything beyond Top N, or the series that groups the Legend members beyond Top N members |
 | **Detail chip** | The small value next to the main value, e.g. ▲ 8.2 %. It can show any measure |
 | **Target tick** | A thin mark on the track at the Target value |
 | **Rank movement** | ▲2 / ▼1 / = next to a label: places gained or lost against the ranking by Compare to |
@@ -105,7 +105,7 @@ Bind these in the Visualizations pane. Required fields are marked ✅; everythin
 - **What it is**: splits each bar into stacked segments, one per member
 - **Required**: ⚪
 - **How to use**: drag a column with few values, e.g. `DimStore[Channel]`
-- **Special treatment**: the 8 largest members (by grand total) keep their own colour; the rest are grouped as "Other". Each member gets a colour picker in [Legend (format card)](#legend-format-card). Negative values can't be stacked: a bar with a negative member is drawn as one bar for its total, in the Negative colour when the total is below zero
+- **Special treatment**: the largest members by grand total keep their own colour, and the rest are grouped as "Other". How many is up to you: [Legend (format card)](#legend-format-card) → Top N members (default 8, 0 shows every member) and "Other" series. Each drawn member gets a colour picker, up to 50. Negative values can't be stacked: a bar with a negative member is drawn as one bar for its total, in the Negative colour when the total is below zero
 
 ### Value
 
@@ -298,6 +298,9 @@ The format pane has 10 cards, in this order, plus **Levels** in Grouped display 
 - **Positive label / Negative label** — legend text for Detail-sign colours. Default Growing / Declining. Greyed out while a Legend field is bound
 - **Stack mode** — Stacked or 100 % stacked (Legend field bound)
 - **Segment gap** — pixels between segments. Default 1
+- **Top N members** — how many members keep their own colour, ranked by grand total. Default 8; **0 shows every member**
+- **Top N scope** — **Across all bars** (default: the members with the biggest grand totals, so every bar shows the same ones) or **Per bar** (each bar draws its own biggest members; the legend then lists every member some bar draws). Greyed out when Top N members is 0
+- **"Other" series** — groups the members beyond Top N into one segment. Default on. Turn it off to draw only the top members: each bar then shows the rest of its total as empty track, so the segments stay truthful
 - **Member colours** — one picker per Legend member, seeded from the report theme
 
 ### Category
@@ -310,6 +313,7 @@ The format pane has 10 cards, in this order, plus **Levels** in Grouped display 
 - **Rank style** — badge before each label: Off (default), Number, Pill (#1), Circled (①), Solid (❶), Medals, Trophy (#1 only), Crowns, Stars, Ribbons or Flames. Icon styles decorate the top 3 and show the number after that. The rank column widens for 100+ bars so labels stay aligned
 - **Sort by** — Value, Axis (A→Z, dates and numbers in natural order) or Sort by field. **Direction** — Descending or Ascending
 - **Top N** — show only the N largest (ranked by Sort by field, else Value). 0 shows all
+- **Top N scope** — Grouped display only: **Per group** (default: the top N inside every group, e.g. 5 stores per channel) or **Across all groups** (the top N bars of the whole card; a group whose bars are all cut disappears). Greyed out in Flat display, where there is only one scope, and when Top N is 0
 - **"Other" bar** — add up the rest into one bar. **"Other" label** — default Other
 - **"Show all" link** — with Top N, a link under the bars shows every bar and back to the top N. Default on. It resets when Top N changes
 
@@ -415,7 +419,7 @@ Shown only when a [Compare to](#compare-to) field is bound.
 ## Common gotchas
 
 - **"Percentages don't add up to 100 %"** → Percent label → Base is All rows, which includes bars hidden by Top N. Turn on the "Other" bar or switch Base to Visible rows.
-- **"Some Legend members are grouped as Other"** → only the 8 largest members get their own segment and colour.
+- **"Some Legend members are grouped as Other"** → Legend → Top N members decides how many keep their own colour (default 8). Raise it, or set 0 to show every member. Past a dozen or so, segment colours get hard to tell apart, and only the first 50 members get a colour picker.
 - **"A scrollbar appeared"** → Fit to height switches to scrolling when the rows can't fit. Use Top N, a smaller bar height, or a taller visual.
 - **"Showing the first 10,000 values"** → the Axis has more values than the visual loads. Use Top N or a filter.
 - **"Too small"** → the card needs at least 200 × 110 pixels.
