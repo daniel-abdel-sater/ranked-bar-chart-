@@ -418,6 +418,8 @@ Shown only when a [Compare to](#compare-to) field is bound.
 
 ## Common gotchas
 
+- **"The percent label is empty after I add a Percent measure"** → the measure returns blank for those rows. A measure that returns **text** (e.g. `FORMAT([Sales]/[Total], "0.0%")`) is shown exactly as it comes; a numeric measure is formatted by the visual.
+- **"My Percent measure shows 4000 %"** → the measure returns 40 and its format string is a percentage one, which multiplies by 100. Return the fraction (0.4), or change the measure's format string.
 - **"Percentages don't add up to 100 %"** → Percent label → Base is All rows, which includes bars hidden by Top N. Turn on the "Other" bar or switch Base to Visible rows.
 - **"Some Legend members are grouped as Other"** → Legend → Top N members decides how many keep their own colour (default 8). Raise it, or set 0 to show every member. Past a dozen or so, segment colours get hard to tell apart, and only the first 50 members get a colour picker.
 - **"A scrollbar appeared"** → Fit to height switches to scrolling when the rows can't fit. Use Top N, a smaller bar height, or a taller visual.

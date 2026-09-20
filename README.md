@@ -4,13 +4,13 @@
 
 Power BI's bar chart is powerful, but making it rich, informative and clear usually takes workarounds: RANKX, "max" measures, phantom bars and a lot of formatting. Ranked Bar Card builds all of that in, so you can show a lot of insight without overwhelming the reader.
 
-**Latest version: 1.5.0.0** · Free, every feature included
+**Latest version: 1.5.1.0** · Free, every feature included
 
 ---
 
 ## Download
 
-[**rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.5.0.0.pbiviz**](rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.5.0.0.pbiviz). Open the file, then click **Download raw file**.
+[**rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.5.1.0.pbiviz**](rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.5.1.0.pbiviz). Open the file, then click **Download raw file**.
 
 ## Install
 
