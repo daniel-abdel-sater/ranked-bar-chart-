@@ -287,8 +287,11 @@ The format pane has 10 cards, in this order, plus **Levels** in Grouped display 
 ### Title
 
 - **Title** — default `{value} by {axis}`. Accepts [tokens](#text-tokens); leave empty for no title
+- **Title colour** — follows the theme until you pick a colour
 - **Title size** — default 15
+- **Bold title** — default on
 - **Subtitle** — empty by default. Accepts tokens
+- **Subtitle colour** — follows the theme until you pick a colour
 - **Subtitle size** — default 12
 
 ### Legend (format card)
@@ -306,7 +309,7 @@ The format pane has 10 cards, in this order, plus **Levels** in Grouped display 
 ### Category
 
 - **Label position** — Above bar (default) or Inline left
-- **Font size** — default 13. **Colour** — has fx
+- **Font size** — default 13. **Bold** — default off. **Colour** — has fx
 - **Label width (inline)** — label column width in Inline left. Default 120
 - **Hierarchy display** — with an expanded Axis hierarchy: Grouped (default, a bar per level with children indented under their parent) or Flat (lowest level only, labelled with its path). Greyed out until a second Axis field is expanded
 - **Indent per level** — how far each level is indented in Grouped display. Default 16
@@ -353,7 +356,7 @@ How Grouped display works:
 - **Show** — default on
 - **Display units** — Auto, None, Thousands, Millions, Billions, Trillions
 - **Decimals** — Auto (from the format string) or 0–4
-- **Font size** — default 14. **Colour** — has fx
+- **Font size** — default 14. **Bold** — default on. **Colour** — has fx
 
 ### Percent label
 
@@ -363,7 +366,7 @@ How Grouped display works:
 
 ### Detail (format card)
 
-- **Show** — default on. **Style** — Text or Tinted pill
+- **Show** — default on. **Style** — Text, Tinted pill (fully rounded) or Tinted rounded square
 - **Sign indicator** — 37 styles: triangles, arrows, chevrons, plus / minus, check / cross, animated trend icons, None
 - **Colour by sign** — good / bad / neutral colours. **Higher is better** — turn off when lower values are good (e.g. costs)
 - **Neutral band ±** — values within this amount count as neutral, in the measure's own units (0.005 = ±0.5 % for a percentage)
@@ -386,10 +389,13 @@ Shown only when a [Compare to](#compare-to) field is bound.
 
 ### Footer
 
+- **Show** — default on. Off hides the footer and greys out the rest of the card
 - **Left** — default `{axis}: {count}`. **Right** — default `Total {total}`. Both accept [tokens](#text-tokens)
-- **Right in accent colour** — for a call to action such as "View details →"
+- **Colour** — the footer text. Follows the theme until you pick a colour
+- **Right in accent colour** — the right text in its own colour, in bold, for a call to action such as "View details →"
+- **Right colour** — the colour used for that. Greyed out while **Right in accent colour** is off
 - **Divider line** — line above the footer. Default on
-- **Font size** — default 11
+- **Font size** — default 11. **Bold** — default off
 
 ### Text tokens
 
