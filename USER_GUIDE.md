@@ -29,6 +29,7 @@
   - [Category](#category)
   - [Levels](#levels)
   - [Bars](#bars)
+  - [Columns](#columns)
   - [Value label](#value-label)
   - [Percent label](#percent-label)
   - [Detail (format card)](#detail-format-card)
@@ -308,9 +309,9 @@ The format pane has 10 cards, in this order, plus **Levels** in Grouped display 
 
 ### Category
 
-- **Label position** — Above bar (default) or Inline left
+- **Label position** — Above bar (default) or Inline left. Greyed out once a label sits right of the bar: a column puts every row on one line, so the name shares the bar's line
 - **Font size** — default 13. **Bold** — default off. **Colour** — has fx
-- **Label width (inline)** — label column width in Inline left. Default 120
+- **Label width** — width of the name column when the name shares the bar's line. Default 120; **0 fits the longest name** (never past 45 % of the row). Left at 0 whenever you move a label right of the bar
 - **Hierarchy display** — with an expanded Axis hierarchy: Grouped (default, a bar per level with children indented under their parent) or Flat (lowest level only, labelled with its path). Greyed out until a second Axis field is expanded
 - **Indent per level** — how far each level is indented in Grouped display. Default 16
 - **Rank style** — badge before each label: Off (default), Number, Pill (#1), Circled (①), Solid (❶), Medals, Trophy (#1 only), Crowns, Stars, Ribbons or Flames. Icon styles decorate the top 3 and show the number after that. The rank column widens for 100+ bars so labels stay aligned
@@ -351,9 +352,18 @@ How Grouped display works:
 - **Glow** — a soft halo in each bar's colour, segments included
 - **Average line** / **Average line colour** — a dashed line at the average of the bars shown ("Other" excluded), labelled e.g. `Avg $11.2M`. Greyed out on 100 % stacked bars and in Grouped display (each level has its own scale)
 
+### Columns
+
+Every number label — Value, Percent, Detail, Target and Compare to — has a **Position**: **Above bar** (on the label line over the bar, the default) or **Right of bar** (its own column, lined up down the card). As soon as one label moves right, each bar becomes a single row: **name | bar | columns**, like a matrix.
+
+- **Show headers** — a header row above the bars, named after each bound field. Default on; greyed out until a label moves right of the bar
+- **Column header** (on each label's own card) — rename that column. Leave it empty to keep the field name
+- The name column fits the longest name unless you set Category → Label width
+
 ### Value label
 
 - **Show** — default on
+- **Position** — Above bar (default) or Right of bar. **Column header** — defaults to the field name
 - **Display units** — Auto, None, Thousands, Millions, Billions, Trillions
 - **Decimals** — Auto (from the format string) or 0–4
 - **Font size** — default 14. **Bold** — default on. **Colour** — has fx
@@ -361,12 +371,14 @@ How Grouped display works:
 ### Percent label
 
 - **Show** — default on
+- **Position** — Above bar (default) or Right of bar. **Column header** — defaults to the Percent field's name, else `%`
 - **Base** — All rows (default: share of the grand total, filters respected) or Visible rows (shares of the bars shown add to 100 %)
 - **Decimals** — default 1. **Font size** — default 11. **Colour** — has fx
 
 ### Detail (format card)
 
-- **Show** — default on. **Style** — Text, Tinted pill (fully rounded) or Tinted rounded square
+- **Show** — default on. **Position** — Above bar (default) or Right of bar. **Column header** — defaults to the field name
+- **Style** — Text, Tinted pill (fully rounded) or Tinted rounded square
 - **Sign indicator** — 37 styles: triangles, arrows, chevrons, plus / minus, check / cross, animated trend icons, None
 - **Colour by sign** — good / bad / neutral colours. **Higher is better** — turn off when lower values are good (e.g. costs)
 - **Neutral band ±** — values within this amount count as neutral, in the measure's own units (0.005 = ±0.5 % for a percentage)
@@ -377,6 +389,8 @@ How Grouped display works:
 - **Show** — default on (only drawn when a Target field is bound). Greyed out on 100 % stacked bars
 - **Colour** — default follows the theme
 - **Width** — tick width in pixels. Default 2
+- **Show value** — writes the target itself next to the bar, in its own format string. Default off
+- **Value position** — Right of bar (default) or Above bar. **Column header** — defaults to the field name
 
 ### Compare to (format card)
 
@@ -386,6 +400,8 @@ Shown only when a [Compare to](#compare-to) field is bound.
 - **Outline colour** / **Outline width** (0.5–6 px, default 1.5) / **Outline style** (Dashed, Dotted, Solid) — how the outline is drawn. Greyed out while the outline is off
 - **Rank movement** — ▲ / ▼ / = next to each label. Default on
 - **Fill Detail when empty** — the Detail chip shows the % change from Compare to. Default on. Greyed out while a Detail field is bound (your Detail measure wins)
+- **Show value** — writes the compared value itself next to the bar, in its own format string. Default off
+- **Value position** — Right of bar (default) or Above bar. **Column header** — defaults to the field name
 
 ### Footer
 
