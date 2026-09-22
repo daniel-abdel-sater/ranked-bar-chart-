@@ -15,6 +15,7 @@
   - [Sort by](#sort-by)
   - [Target](#target)
   - [Compare to](#compare-to)
+  - [Extra fields](#extra-fields)
   - [Tooltips](#tooltips)
   - [Footer 1 and Footer 2](#footer-1-and-footer-2)
 - [Sample data model](#sample-data-model)
@@ -35,6 +36,7 @@
   - [Detail (format card)](#detail-format-card)
   - [Target marker](#target-marker)
   - [Compare to (format card)](#compare-to-format-card)
+  - [Extra fields (format card)](#extra-fields-format-card)
   - [Footer](#footer)
   - [Text tokens](#text-tokens)
 - [Interaction](#interaction)
@@ -51,6 +53,8 @@ Three steps to a working visual. Everything else is optional and explained below
 1. Drag your **category column** (e.g. StoreName, Country, Channel) into the `Axis` field.
 2. Drag your **measure** (e.g. Total Sales Amount) into the `Value` field.
 3. That's it: one bar per category, sorted largest first, with the value, its % of total and a footer.
+
+Only have a measure? Drop it into `Value` on its own and the card draws a single bar for it — add a [Legend](#legend) to split that bar, or an `Axis` whenever you want one bar per category.
 
 > Want arrows like ▲ 8.2 %? Add a measure to [Detail](#detail). Want to see who moved up since last year? Add last year's measure to [Compare to](#compare-to). Want to split each bar? Add a [Legend](#legend). No helper tables or ranking DAX are needed: rank, Top N and % of total are built in.
 
@@ -90,12 +94,12 @@ Three steps to a working visual. Everything else is optional and explained below
 
 ## Fields
 
-Bind these in the Visualizations pane. Required fields are marked ✅; everything else is optional.
+Bind these in the Visualizations pane. **Value is the only field the card needs**; everything else, Axis included, is optional.
 
 ### Axis
 
 - **What it is**: the category to rank. One bar per unique value
-- **Required**: ✅
+- **Required**: ⚪ — without it the card draws **one bar for the measure itself**, labelled with its name (with a Legend, that one bar splits into its members). Add an Axis to get a bar per category
 - **How to use**: drag a column, e.g. `DimStore[StoreName]`. Field parameters work too: the default title (`{value} by {axis}`) follows the field the parameter selects
 - **Drill down**: add several fields (e.g. Channel, then StoreName) and use the drill buttons in the visual header. After **Expand all down one level**, [Category](#category) → Hierarchy display decides the layout:
   - **Grouped** (default): like a matrix in compact layout. Each channel has its own bar, value, % and Detail, and its stores are listed below it, indented, each ranked within its channel. [Levels](#levels) shows or hides each level's bar and labels
@@ -111,7 +115,7 @@ Bind these in the Visualizations pane. Required fields are marked ✅; everythin
 ### Value
 
 - **What it is**: the number behind bar length, ranking and % of total
-- **Required**: ✅
+- **Required**: ✅ — the only field the card needs. On its own it draws one bar for the measure
 - **How to use**: bind a numeric measure. Its format string (`$#,0`, `0.0%`, …) is used everywhere
 - **Special treatment**: % of total uses Power BI's own grand total, so it stays exact for averages, distinct counts and ratios too
 - **DAX example**:
@@ -184,6 +188,15 @@ Bind these in the Visualizations pane. Required fields are marked ✅; everythin
   ```dax
   Sales PY = CALCULATE([Total Sales Amount], SAMEPERIODLASTYEAR(DimDate[Date]))
   ```
+
+### Extra fields
+
+- **What it is**: up to four more columns of your own — a column or a measure each — shown beside the bars
+- **Required**: ⚪
+- **How to use**: drag up to four fields. Each one gets a column and its own group in [Extra fields](#extra-fields-format-card): **Position** (Before bar / After bar), **Column header**, **Colour**, **Font size**, **Alignment** and **Width**
+- **Where they sit**: *Before bar* puts the column between the category name and the bar; *After bar* puts it after every built-in label (value, % of total, Detail, target, compared value), in well order
+- **Special treatment**: a text column shows what Power BI aggregates for the bar (First, by default — change it in the well); a measure keeps its own format string. The value is repeated in the tooltip, so a column that is too narrow and ends in … never hides anything. The “Other” bar leaves these cells blank, because summing a text column or an average would lie
+- **Layout**: a bound Extra field puts every row on one line, like moving a label right of the bar
 
 ### Tooltips
 
@@ -402,6 +415,17 @@ Shown only when a [Compare to](#compare-to) field is bound.
 - **Fill Detail when empty** — the Detail chip shows the % change from Compare to. Default on. Greyed out while a Detail field is bound (your Detail measure wins)
 - **Show value** — writes the compared value itself next to the bar, in its own format string. Default off
 - **Value position** — Right of bar (default) or Above bar. **Column header** — defaults to the field name
+
+### Extra fields (format card)
+
+Shown only when the [Extra fields](#extra-fields) well has something in it. One group per bound field, named after it:
+
+- **Position** — Before bar or After bar (default)
+- **Column header** — defaults to the field name
+- **Colour** — follows the theme until you pick one
+- **Font size** — default 12
+- **Alignment** — Auto (numbers right, text left), Left or Right
+- **Width** — default 0: the column fits its longest value, up to 20 % of the row, and cuts anything longer with … Set a number of pixels to fix it
 
 ### Footer
 
