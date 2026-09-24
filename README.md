@@ -4,13 +4,13 @@
 
 Power BI's bar chart is powerful, but making it rich, informative and clear usually takes workarounds: RANKX, "max" measures, phantom bars and a lot of formatting. Ranked Bar Card builds all of that in, so you can show a lot of insight without overwhelming the reader.
 
-**Latest version: 1.8.0.0** · Free, every feature included
+**Latest version: 1.11.0.0** · Free, every feature included
 
 ---
 
 ## Download
 
-[**rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.8.0.0.pbiviz**](rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.8.0.0.pbiviz). Open the file, then click **Download raw file**.
+[**rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.11.0.0.pbiviz**](rankedBarCard95E169D0FC7F81DEB9B84590B3270B98.1.11.0.0.pbiviz). Open the file, then click **Download raw file**.
 
 ## Install
 
@@ -60,6 +60,10 @@ That's it: one bar per category, sorted largest first, with the value, its % of 
 - **Styling**: colour and bold controls for the title, subtitle, category labels, values and footer — and the footer can be hidden.
 - **Layout**: every number label — value, % of total, Detail, target and the compared value — sits over its bar or moves into its own column, so the card reads like a table with a header row you can rename.
 - **Extra fields**: up to four more columns or measures of your own, each placed before or after the bar with its own header, colour, size, alignment and width.
+- **Badges**: the category label and any Extra field can be drawn as a pill or a rounded square — solid or tinted — and its colour takes conditional formatting, so every row paints its own. Text on a solid badge contrasts itself.
+- **Conditional formatting** on every colour that varies by row: bar, category, value, percent, Detail, and each Extra field's text and badge.
+- **One measure is enough**: with no category the card draws a single bar for the measure; add a Legend and that bar splits into its members.
+- **A format pane you can navigate**: every card is split into titled sections — Category into Label, Pill, Rank, Sort, Top N and Hierarchy; Bars into Size, Spacing, Colour, Track and scale, Effects and Average line; and so on.
 - **Accessible**: keyboard navigation, screen-reader labels, Windows high-contrast support.
 - **Scales** to 10,000 categories.
 

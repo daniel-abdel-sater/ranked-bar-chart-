@@ -279,6 +279,8 @@ Mental model: with `StoreName` on Axis, every measure is evaluated once per stor
 
 ## Settings
 
+> **Finding a control.** Every card is split into titled sections: *Category* has Label, Pill, Rank, Sort, Top N and Hierarchy; *Bars* has Size, Spacing, Colour, Track and scale, Effects and Average line; *Detail* has Placement, Chip, Direction, Colours and Number; the label cards each have Placement, Number and Look. Nothing moved between cards, so a setting you knew is in the same card — just under a heading now.
+
 > **Five settings you'll touch most**
 >
 > 1. **Category → Top N** and **"Other" bar**: show the top 10 and group the rest.
@@ -324,6 +326,7 @@ The format pane has 10 cards, in this order, plus **Levels** in Grouped display 
 
 - **Label position** — Above bar (default) or Inline left. Greyed out once a label sits right of the bar: a column puts every row on one line, so the name shares the bar's line
 - **Font size** — default 13. **Bold** — default off. **Colour** — has fx
+- **Pill shape** / **Pill fill** / **Pill colour** (fx) / **Text on pill** (fx) — draws the category label as a badge, exactly like an [Extra field](#extra-fields-format-card). A solid badge greys out **Colour**, since the text then follows the fill
 - **Label width** — width of the name column when the name shares the bar's line. Default 120; **0 fits the longest name** (never past 45 % of the row). Left at 0 whenever you move a label right of the bar
 - **Hierarchy display** — with an expanded Axis hierarchy: Grouped (default, a bar per level with children indented under their parent) or Flat (lowest level only, labelled with its path). Greyed out until a second Axis field is expanded
 - **Indent per level** — how far each level is indented in Grouped display. Default 16
@@ -391,7 +394,7 @@ Every number label — Value, Percent, Detail, Target and Compare to — has a *
 ### Detail (format card)
 
 - **Show** — default on. **Position** — Above bar (default) or Right of bar. **Column header** — defaults to the field name
-- **Style** — Text, Tinted pill (fully rounded) or Tinted rounded square
+- **Pill shape** — None (default), Pill or Rounded square. **Pill fill** — Tinted (default) or Solid. Reports saved before this keep the chip they had
 - **Sign indicator** — 37 styles: triangles, arrows, chevrons, plus / minus, check / cross, animated trend icons, None
 - **Colour by sign** — good / bad / neutral colours. **Higher is better** — turn off when lower values are good (e.g. costs)
 - **Neutral band ±** — values within this amount count as neutral, in the measure's own units (0.005 = ±0.5 % for a percentage)
@@ -424,8 +427,14 @@ Shown only when the [Extra fields](#extra-fields) well has something in it. One 
 - **Column header** — defaults to the field name
 - **Colour** — follows the theme until you pick one
 - **Font size** — default 12
+- **Colour** — has **fx**, so a rule, gradient or field value can colour each row
+- **Font size** — default 12. **Bold** — default off
 - **Alignment** — Auto (numbers right, text left), Left or Right
 - **Width** — default 0: the column fits its longest value, up to 20 % of the row, and cuts anything longer with … Set a number of pixels to fix it
+- **Pill shape** — None (default), Pill or Rounded square: draws the value as a badge
+- **Pill fill** — Solid (the badge takes the pill colour) or Tinted (a 16 % wash, and the text keeps **Colour**)
+- **Pill colour** — has **fx**: every badge can take its colour from the data
+- **Text on pill** — left alone, the text contrasts with its own fill (white on dark, near-black on light). Set it, or drive it with **fx**, when you want something specific. Solid pills only
 
 ### Footer
 
